@@ -1,6 +1,6 @@
 import React, { useState, FormEvent } from 'react';
+import { FiChevronRight } from 'react-icons/fi';
 import api from '../../services/api';
-import Repository from '../Repository';
 
 import { Title, Repositories, Form } from './styles';
 
@@ -26,6 +26,7 @@ const Dashboard: React.FC = () => {
     const repository = response.data;
 
     setRepositories([...repositories, repository]);
+    setNewRepo('');
   }
 
   return (
@@ -35,7 +36,7 @@ const Dashboard: React.FC = () => {
       <Form onSubmit={handleAddRepository}>
         <input
           value={newRepo}
-          onChange={e => setNewRepo}
+          onChange={e => setNewRepo(e.target.value)}
           type="text"
           placeholder="Digite o nome do repositório"
         />
@@ -43,18 +44,43 @@ const Dashboard: React.FC = () => {
       </Form>
 
       <Repositories>
-        {repositories.map(repository => (
-          <>
-            <img
-              src={repository.owner.avatarUrl}
-              alt={repository.owner.login}
-            />
-            <div>
-              <strong>{repository.fullName}</strong>
-              <p>{repository.description}</p>
-            </div>
-          </>
-        ))}
+        <a key="GitHubRepository" href="teste">
+          <img
+            src="https://avatars.githubusercontent.com/u/82897913?v=4"
+            alt="RAZ"
+          />
+          <div>
+            <strong>GitHubRepository</strong>
+            <p>Descrição descritiva do projeto</p>
+          </div>
+          <FiChevronRight size={20} />
+        </a>
+      </Repositories>
+      <Repositories>
+        <a key="GitHubRepository" href="teste">
+          <img
+            src="https://avatars.githubusercontent.com/u/82897913?v=4"
+            alt="RAZ"
+          />
+          <div>
+            <strong>GitHubRepository</strong>
+            <p>Descrição descritiva do projeto</p>
+          </div>
+          <FiChevronRight size={20} />
+        </a>
+      </Repositories>
+      <Repositories>
+        <a key="GitHubRepository" href="teste">
+          <img
+            src="https://avatars.githubusercontent.com/u/82897913?v=4"
+            alt="RAZ"
+          />
+          <div>
+            <strong>GitHubRepository</strong>
+            <p>Descrição descritiva do projeto</p>
+          </div>
+          <FiChevronRight size={20} />
+        </a>
       </Repositories>
     </>
   );
